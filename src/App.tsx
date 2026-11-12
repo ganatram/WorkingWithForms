@@ -10,7 +10,7 @@ const myRouterTree = createBrowserRouter([
   {
     path: 'contact',
     element: <ContactPage />,
-    action: contactPageAction,
+    action: ContactPageAction,
   },
   {
     path: '/thank-you/:name',
