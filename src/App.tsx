@@ -5,12 +5,12 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 const myRouterTree = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to="contact" />,
+    element: <Navigate to="contact" />, // statechange to the BrowserURL state
   },
   {
     path: 'contact',
     element: <ContactPage />,
-    action: ContactPageAction,
+    action: ContactPageAction, // lets you declare 'ActionMethods'
   },
   {
     path: '/thank-you/:name',

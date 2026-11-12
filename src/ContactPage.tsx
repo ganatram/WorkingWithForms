@@ -1,5 +1,6 @@
 import { FormEvent } from 'react';
 import { Form, ActionFunctionArgs, redirect } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 type Contact = {
   name: string;
@@ -30,7 +31,7 @@ export function ContactPage() {
       <Form method="post">
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="name" required minLength={5} />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="email">Your email address</label>
@@ -60,7 +61,7 @@ export function ContactPage() {
 }
 
 export async function ContactPageAction({ request }: ActionFunctionArgs) {
-  const formData = await request.formData();
+  const formData = await request.formData(); // new FormData()
   const contact = {
     name: formData.get('name'), // queries the 'name' property of FormControl
     email: formData.get('email'),
