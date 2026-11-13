@@ -10,6 +10,12 @@ type Contact = {
 };
 
 export function ContactPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+  } = useForm();
+
   const fieldStyle = 'flex flex-col mb-2';
   /*   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,15 +37,34 @@ export function ContactPage() {
       <form>
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
-          <input type="text" id="name" />
+          <input
+            type="text"
+            id="name"
+            {...register('name', { required: 'you must enter your good name' })}
+          />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="email">Your email address</label>
-          <input type="email" id="email" />
+          <input
+            type="email"
+            id="email"
+            {...register('email', {
+              required: 'You must enter your email address',
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: 'Entered value does not match email format',
+              },
+            })}
+          />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="reason">Reason you need to contact us</label>
-          <select id="reason">
+          <select
+            id="reason"
+            {...register('reason', {
+              required: 'You must enter the reason for contacting us',
+            })}
+          >
             <option value=""></option>
             <option value="Support">Support</option>
             <option value="Feedback">Feedback</option>
@@ -48,7 +73,7 @@ export function ContactPage() {
         </div>
         <div className={fieldStyle}>
           <label htmlFor="notes">Additional notes</label>
-          <textarea id="notes" />
+          <textarea id="notes" {...register('notes')} />
         </div>
         <div>
           <button type="submit" className="mt-2 h-10 px-6 font-semibold bg-black text-white">
