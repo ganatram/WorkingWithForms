@@ -1,0 +1,6 @@
+
+
+native validation - Browser  
+required,minlength,maxlength,pattern (Constrain Validation API)
+
+
