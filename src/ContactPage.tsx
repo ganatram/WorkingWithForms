@@ -35,7 +35,7 @@ export function ContactPage() {
         </div>
         <div className={fieldStyle}>
           <label htmlFor="email">Your email address</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" required maxLength={12} />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="reason">Reason you need to contact us</label>
