@@ -63,7 +63,7 @@ export function ContactPage() {
 export async function ContactPageAction({ request }: ActionFunctionArgs) {
   const formData = await request.formData(); // new FormData()
   const contact = {
-    name: formData.get('name'), // queries the 'name' property of FormControl
+    name: formData.get('name'), // get()      --- queries the 'name' property of FormControl
     email: formData.get('email'),
     reason: formData.get('reason'),
     notes: formData.get('notes'),
