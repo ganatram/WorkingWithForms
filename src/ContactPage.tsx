@@ -1,5 +1,5 @@
-import { FormEvent } from 'react';
-import { Form, ActionFunctionArgs, redirect } from 'react-router-dom';
+// import { FormEvent } from 'react';
+import { redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 type Contact = {
@@ -28,18 +28,18 @@ export function ContactPage() {
     <div className="flex flex-col py-10 max-w-md mx-auto">
       <h2 className="text-3xl font-bold underline mb-3">Contact Us</h2>
       <p className="mb-3">If you enter your details we'll get back to you as soon as we can.</p>
-      <Form method="post">
+      <form>
         <div className={fieldStyle}>
           <label htmlFor="name">Your name</label>
-          <input type="text" id="name" name="name" required minLength={5} />
+          <input type="text" id="name" />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="email">Your email address</label>
-          <input type="email" id="email" name="email" required maxLength={12} />
+          <input type="email" id="email" />
         </div>
         <div className={fieldStyle}>
           <label htmlFor="reason">Reason you need to contact us</label>
-          <select id="reason" name="reason">
+          <select id="reason">
             <option value=""></option>
             <option value="Support">Support</option>
             <option value="Feedback">Feedback</option>
@@ -48,19 +48,19 @@ export function ContactPage() {
         </div>
         <div className={fieldStyle}>
           <label htmlFor="notes">Additional notes</label>
-          <textarea id="notes" name="notes" />
+          <textarea id="notes" />
         </div>
         <div>
           <button type="submit" className="mt-2 h-10 px-6 font-semibold bg-black text-white">
             Submit
           </button>
         </div>
-      </Form>
+      </form>
     </div>
   );
 }
 
-export async function ContactPageAction({ request }: ActionFunctionArgs) {
+/* export async function ContactPageAction({ request }: ActionFunctionArgs) {
   const formData = await request.formData(); // new FormData()
   const contact = {
     name: formData.get('name'), // get()      --- queries the 'name' property of FormControl
@@ -71,4 +71,4 @@ export async function ContactPageAction({ request }: ActionFunctionArgs) {
 
   console.log('Submitted details:', contact);
   return redirect(`/thank-you/${formData.get('name')}`);
-}
+} */
